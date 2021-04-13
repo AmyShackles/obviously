@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+
+    </head>
+    <body>
+        <h1 id="content"></h1>
+    </body>        
+    <script>
+            document.head.getElementsByTagName("title")[0].innerText = `${window.location.host.match(/^[^.]+/)} are OBVIOUSY best`;
+            document.getElementById("content").textContent = `${window.location.host.match(/^[^.]+/)} are OBVIOUSLY best.`;
+    </script>
+</html>
