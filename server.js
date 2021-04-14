@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const { political } = require("./political.js");
 const { disallowed } = require("./disallowed.js");
-const { SentimentAnalyzer, PorterStemmer } = require("natural");
+const Sentiment = require("sentiment");
+const sentiment = new Sentiment();
 
 const PORT = process.env.PORT || 5000;
 
@@ -15,61 +16,35 @@ server.use("/political", express.static(path.join(__dirname + "/political")));
 server.get("/", (req, res) => {
     const rootSubdomain = req.subdomains[0];
     const subject = req.subdomains[1];
-    const analyzer = new SentimentAnalyzer("English", PorterStemmer, "afinn");
-    const sentiment = subject && analyzer.getSentiment(subject.split("-"));
+    const analyzedSentiment = sentiment.analyze(subject, disallowed);
     switch (rootSubdomain) {
         case "are":
-            if (
-                political.some((politics) => subject.includes(politics))
-            ) {
+            if (political.some((politics) => subject.includes(politics))) {
                 return res.sendFile(path.join(__dirname + "/political.html"));
-            } else if (
-                sentiment < 0 ||
-                disallowed.some((banned) => subject.includes(banned))
-            ) {
+            } else if (analyzedSentiment.score < 0) {
                 return res.sendFile(
                     path.join(__dirname + "/aredisallowed.html")
                 );
             } 
             return res.sendFile(path.join(__dirname + "/are.html"));
         case "is":
-            if (
-                political.some((politics) => subject.includes(politics))
-            ) {
+            if (subject === "bobcat") {
+                return res.redirect(
+                    "https://www.icloud.com/sharedalbum/#B0I532ODWlUfMV"
+                );
+            } else if (subject === "tomcat") {
+                return res.redirect(
+                    "https://www.icloud.com/sharedalbum/#B0IGWZuqDGaPwcf"
+                );
+            }
+            if (political.some((politics) => subject.includes(politics))) {
                 return res.sendFile(path.join(__dirname + "/political.html"));
-            } else if (
-                sentiment < 0 ||
-                disallowed.some((banned) => subject.includes(banned))
-            ) {
+            } else if (analyzedSentiment.score < 0) {
                 return res.sendFile(
                     path.join(__dirname + "/isdisallowed.html")
                 );
             } 
             return res.sendFile(path.join(__dirname + "/is.html"));
-        case "not":
-            if (req.subdomains[1] === "is") {
-                if (
-                    political.some((politics) =>
-                        req.subdomains[2].includes(politics)
-                    )
-                ) {
-                    return res.sendFile(
-                        path.join(__dirname + "/political.html")
-                    );
-                }
-                return res.sendFile(path.join(__dirname + "/isnot.html"));
-            } else if (req.subdomains[1] === "are") {
-                if (
-                    political.some((politics) =>
-                        req.subdomains[2].includes(politics)
-                    )
-                ) {
-                    return res.sendFile(
-                        path.join(__dirname + "/political.html")
-                    );
-                }
-                return res.sendFile(path.join(__dirname + "/arenot.html"));
-            }
     }
     return res.status(404).send("This is an unsupported use of the domain.");
 });
