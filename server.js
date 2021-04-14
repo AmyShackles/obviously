@@ -7,6 +7,11 @@ const { SentimentAnalyzer, PorterStemmer } = require("natural");
 const PORT = process.env.PORT || 5000;
 
 const server = express();
+server.use(express.static("disallowed"));
+server.use(express.static("is"));
+server.use(express.static("is-not"));
+server.use(express.static("political"));
+
 server.get("/", (req, res) => {
     const rootSubdomain = req.subdomains[0];
     const subject = req.subdomains[1];
