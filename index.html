@@ -2,13 +2,16 @@
 <html>
     <head>
         <title></title>
-
     </head>
     <body>
         <h1 id="content"></h1>
     </body>        
     <script>
-            document.head.getElementsByTagName("title")[0].innerText = `${window.location.host.match(/^[^.]+/)} is OBVIOUSY best`;
-            document.getElementById("content").textContent = `${window.location.host.match(/^[^.]+/)} is OBVIOUSLY best.`;
+        function capitalizeAndConvertHyphensToSpaces(subj) {
+            return subj.split("-").map(val => val[0].toUpperCase() + val.slice(1)).join(" ");
+        }
+        const subject = capitalizeAndConvertHyphensToSpaces(window.location.host.match(/^[^.]+/)[0]);
+        document.head.getElementsByTagName("title")[0].innerText = `${subject} is OBVIOUSY best`;
+        document.getElementById("content").textContent = `${subject} is OBVIOUSLY best.`;
     </script>
 </html>
