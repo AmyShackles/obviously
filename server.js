@@ -20,31 +20,31 @@ server.get("/", (req, res) => {
     switch (rootSubdomain) {
         case "are":
             if (
+                political.some((politics) => politics.includes(subject))
+            ) {
+                return res.sendFile(path.join(__dirname + "/political.html"));
+            } else if (
                 sentiment < 0 ||
                 disallowed.some((banned) => banned.includes(subject))
             ) {
                 return res.sendFile(
                     path.join(__dirname + "/aredisallowed.html")
                 );
-            } else if (
-                political.some((politics) => politics.includes(subject))
-            ) {
-                return res.sendFile(path.join(__dirname + "/political.html"));
-            }
+            } 
             return res.sendFile(path.join(__dirname + "/are.html"));
         case "is":
             if (
+                political.some((politics) => politics.includes(subject))
+            ) {
+                return res.sendFile(path.join(__dirname + "/political.html"));
+            } else if (
                 sentiment < 0 ||
                 disallowed.some((banned) => banned.includes(subject))
             ) {
                 return res.sendFile(
                     path.join(__dirname + "/isdisallowed.html")
                 );
-            } else if (
-                political.some((politics) => politics.includes(subject))
-            ) {
-                return res.sendFile(path.join(__dirname + "/political.html"));
-            }
+            } 
             return res.sendFile(path.join(__dirname + "/is.html"));
         case "not":
             if (req.subdomains[1] === "is") {
