@@ -16,7 +16,7 @@ server.get("/", (req, res) => {
     const rootSubdomain = req.subdomains[0];
     const subject = req.subdomains[1];
     const analyzer = new SentimentAnalyzer("English", PorterStemmer, "afinn");
-    const sentiment = subject && analyzer.getSentiment([subject]);
+    const sentiment = subject && analyzer.getSentiment(subject.split("-"));
     switch (rootSubdomain) {
         case "are":
             if (
