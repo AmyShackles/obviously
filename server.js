@@ -20,12 +20,12 @@ server.get("/", (req, res) => {
     switch (rootSubdomain) {
         case "are":
             if (
-                political.some((politics) => politics.includes(subject))
+                political.some((politics) => subject.includes(politics))
             ) {
                 return res.sendFile(path.join(__dirname + "/political.html"));
             } else if (
                 sentiment < 0 ||
-                disallowed.some((banned) => banned.includes(subject))
+                disallowed.some((banned) => subject.includes(banned))
             ) {
                 return res.sendFile(
                     path.join(__dirname + "/aredisallowed.html")
@@ -34,12 +34,12 @@ server.get("/", (req, res) => {
             return res.sendFile(path.join(__dirname + "/are.html"));
         case "is":
             if (
-                political.some((politics) => politics.includes(subject))
+                political.some((politics) => subject.includes(politics))
             ) {
                 return res.sendFile(path.join(__dirname + "/political.html"));
             } else if (
                 sentiment < 0 ||
-                disallowed.some((banned) => banned.includes(subject))
+                disallowed.some((banned) => subject.includes(banned))
             ) {
                 return res.sendFile(
                     path.join(__dirname + "/isdisallowed.html")
@@ -50,7 +50,7 @@ server.get("/", (req, res) => {
             if (req.subdomains[1] === "is") {
                 if (
                     political.some((politics) =>
-                        politics.includes(req.subdomains[2])
+                        req.subdomains[2].includes(politics)
                     )
                 ) {
                     return res.sendFile(
@@ -61,7 +61,7 @@ server.get("/", (req, res) => {
             } else if (req.subdomains[1] === "are") {
                 if (
                     political.some((politics) =>
-                        politics.includes(req.subdomains[2])
+                        req.subdomains[2].includes(politics)
                     )
                 ) {
                     return res.sendFile(
