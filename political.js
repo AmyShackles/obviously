@@ -288,6 +288,8 @@ const political = [
     "joaquin-castro",
     "jodey-arrington",
     "jody-hice",
+    "joe-biden",
+    "joseph-biden",
     "joe-courtney",
     "joe-manchin",
     "joe-neguse",
