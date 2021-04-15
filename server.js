@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const { political } = require("./political.js");
 const { disallowed } = require("./disallowed.js");
+const { ethnocentric } = require("./ethnocentric.js");
 const Sentiment = require("sentiment");
 const sentiment = new Sentiment();
 
@@ -9,8 +10,11 @@ const PORT = process.env.PORT || 5000;
 
 const server = express();
 server.use("/disallowed", express.static(path.join(__dirname + "/disallowed")));
+server.use(
+    "/ethnocentric",
+    express.static(path.join(__dirname + "/ethnocentric"))
+);
 server.use("/is", express.static(path.join(__dirname + "/is")));
-server.use("/is-not", express.static(path.join(__dirname + "/is-not")));
 server.use("/political", express.static(path.join(__dirname + "/political")));
 
 server.get("/", (req, res) => {
@@ -39,6 +43,8 @@ server.get("/", (req, res) => {
             }
             if (political.some((politics) => subject.includes(politics))) {
                 return res.sendFile(path.join(__dirname + "/political.html"));
+            } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
+                return res.sendFile(path.join(__dirname + "/ethnocentric.html"));
             } else if (analyzedSentiment.score < 0) {
                 return res.sendFile(
                     path.join(__dirname + "/isdisallowed.html")
