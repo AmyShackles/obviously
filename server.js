@@ -25,6 +25,8 @@ server.get("/", (req, res) => {
         case "are":
             if (political.some((politics) => subject.includes(politics))) {
                 return res.sendFile(path.join(__dirname + "/political.html"));
+            } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
+                return res.sendFile(path.join(__dirname + "/ethnocentric.html"));
             } else if (analyzedSentiment.score < 0) {
                 return res.sendFile(
                     path.join(__dirname + "/aredisallowed.html")
