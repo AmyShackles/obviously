@@ -26,7 +26,7 @@ server.get("/", (req, res) => {
             if (political.some((politics) => subject.includes(politics))) {
                 return res.sendFile(path.join(__dirname + "/political.html"));
             } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
-                return res.sendFile(path.join(__dirname + "/ethnocentric.html"));
+                return res.sendFile(path.join(__dirname + "/are-ethnocentric.html"));
             } else if (analyzedSentiment.score < 0) {
                 return res.sendFile(
                     path.join(__dirname + "/aredisallowed.html")
@@ -46,7 +46,7 @@ server.get("/", (req, res) => {
             if (political.some((politics) => subject.includes(politics))) {
                 return res.sendFile(path.join(__dirname + "/political.html"));
             } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
-                return res.sendFile(path.join(__dirname + "/ethnocentric.html"));
+                return res.sendFile(path.join(__dirname + "/is-ethnocentric.html"));
             } else if (analyzedSentiment.score < 0) {
                 return res.sendFile(
                     path.join(__dirname + "/isdisallowed.html")
