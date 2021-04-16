@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/is/apple-touch-icon.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/is/favicon-32x32.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/is/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/is/site.webmanifest" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name=viewport content="width=device-width, initial-scale=1"/>
+        <meta name="theme-color" content="#FFFFFF"/>
+        <meta name="twitter:dnt" content="on">
+        <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/is/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/is/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/is/favicon-16x16.png">
+        <link rel="manifest" href="/is/site.webmanifest"> 
+        <link rel="stylesheet" href="/is/styles.css">
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <title></title>
     </head>
     <body>
+        <header>Obviously.</header>
+        <main>
         <h1 id="content"></h1>
+        <p>If you feel like this SHOULDN'T be the best,<br/><a href="https://github.com/amyshackles/obviously">feel free to submit a PR</a> or send me a <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="@AmyShackles I don&#39;t think this should be the best..." data-related="" data-dnt="true" data-show-count="false">Tweet</a></p>
+
+        <h2>Share this news with your friends!</h2>
+        <ul>
+            <li class="social-share facebook"><img src="/is/facebook.png" alt="Share Page on Facebook" /></li>
+            <li class="social-share twitter"><img src="/is/twitter.png" alt="Share Page on Twitter" /></li>
+            <li class="social-share linkedin"><img  src="/is/linkedin.png" alt="Share Page on LinkedIn" /></li>
+        </ul>
+    </main>
+        <footer>
+            <p>Created with love and hope by Amy Shackles</p>
+        </footer>
     </body>
     <script>
+        function socialWindow(url) {
+            const left = (screen.width - 570) / 2;
+            const top = (screen.height - 570) / 2;
+            const params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
+            window.open(url,"NewWindow",params);
+        }
         function capitalizeAndConvertHyphensToSpaces(subj) {
             return subj
                 .split("-")
@@ -36,9 +48,21 @@
         );
         document.head.getElementsByTagName(
             "title"
-        )[0].innerText = `${subject} is OBVIOUSY best`;
+        )[0].innerText = `${subject} is the best`;
         document.getElementById(
             "content"
-        ).textContent = `${subject} is OBVIOUSLY best.`;
+        ).textContent = `${subject} is OBVIOUSLY the best.`;
+        document.querySelector(".social-share.facebook").addEventListener('click', () => {
+            const url = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(document.URL)}`
+            socialWindow(url);
+        });
+        document.querySelector(".social-share.twitter").addEventListener('click', () => {
+            const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(document.URL)}&text=${encodeURIComponent(`${subject} is OBVIOUSLY best`)}`;
+            socialWindow(url);
+        })
+        document.querySelector(".social-share.linkedin").addEventListener('click', () => {
+            const url = `https://linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(document.URL)}&title=${encodeURIComponent(subject)}&summary=${encodeURIComponent(`${subject} is OBVIOUSLY best`)}&source=${encodeURIComponent("Obviously.Best")}`;
+            socialWindow(url);
+        });
     </script>
 </html>

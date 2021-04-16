@@ -17,42 +17,44 @@ server.use(
 server.use("/is", express.static(path.join(__dirname + "/is")));
 server.use("/political", express.static(path.join(__dirname + "/political")));
 
+server.use("/robots.txt", (req, res) => {
+    res.type("text/plain");
+    res.send("User-agent: *\nDisallow: /");
+});
+
 server.get("/", (req, res) => {
+    res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
     const rootSubdomain = req.subdomains[0];
     const subject = req.subdomains[1];
     const analyzedSentiment = sentiment.analyze(subject, disallowed);
-    switch (rootSubdomain) {
-        case "are":
-            if (political.some((politics) => subject.includes(politics))) {
-                return res.sendFile(path.join(__dirname + "/political.html"));
-            } else if (analyzedSentiment.score < 0) {
-                return res.sendFile(
-                    path.join(__dirname + "/aredisallowed.html")
-                );
-            } 
-            return res.sendFile(path.join(__dirname + "/are.html"));
-        case "is":
-            if (subject === "bobcat") {
-                return res.redirect(
-                    "https://www.icloud.com/sharedalbum/#B0I532ODWlUfMV"
-                );
-            } else if (subject === "tomcat") {
-                return res.redirect(
-                    "https://www.icloud.com/sharedalbum/#B0IGWZuqDGaPwcf"
-                );
-            }
-            if (political.some((politics) => subject.includes(politics))) {
-                return res.sendFile(path.join(__dirname + "/political.html"));
-            } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
-                return res.sendFile(path.join(__dirname + "/ethnocentric.html"));
-            } else if (analyzedSentiment.score < 0) {
-                return res.sendFile(
-                    path.join(__dirname + "/isdisallowed.html")
-                );
-            } 
-            return res.sendFile(path.join(__dirname + "/is.html"));
+    if (rootSubdomain === "are") {
+        if (political.some((politics) => subject.includes(politics))) {
+            return res.sendFile(path.join(__dirname + "/political.html"));
+        } else if (analyzedSentiment.score < 0) {
+            return res.sendFile(path.join(__dirname + "/disallowed.html"));
+        }
+        return res.sendFile(path.join(__dirname + "/are.html"));
+    } else if (rootSubdomain === "is") {
+        if (subject === "bobcat") {
+            return res.redirect(
+                "https://www.icloud.com/sharedalbum/#B0I532ODWlUfMV"
+            );
+        } else if (subject === "tomcat") {
+            return res.redirect(
+                "https://www.icloud.com/sharedalbum/#B0IGWZuqDGaPwcf"
+            );
+        }
+        if (political.some((politics) => subject.includes(politics))) {
+            return res.sendFile(path.join(__dirname + "/political.html"));
+        } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
+            return res.sendFile(path.join(__dirname + "/ethnocentric.html"));
+        } else if (analyzedSentiment.score < 0) {
+            return res.sendFile(path.join(__dirname + "/disallowed.html"));
+        }
+        return res.sendFile(path.join(__dirname + "/is.html"));
     }
     return res.status(404).send("This is an unsupported use of the domain.");
 });
+
 
 server.listen(PORT);
