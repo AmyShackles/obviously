@@ -1,17 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name=viewport content="width=device-width, initial-scale=1"/>
+        <meta name="theme-color" content="#FFFFFF"/>
+        <meta name="twitter:dnt" content="on">
+        <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/is/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/is/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/is/favicon-16x16.png">
+        <link rel="manifest" href="/is/site.webmanifest">
+        <link rel="stylesheet" href="/is/styles.css">
+        <title>Obviously.best</title>
     </head>
     <body>
+        <header>Obviously.</header>
+        <main class="root">
         <h1 id="content"></h1>
-    </body>        
+        <h2>This is a website with wildcard subdomains built to spread joy.</h2>
+        <div class="usage">
+            <h3 class="usage">Usage instructions:</h3>
+            <ul class="usage">
+                <li><a href="https://bobcat.is.obviously.best">bobcat.is.obviously.best</a> routes to an iCloud album of my feline friend Robert "Mayhem" Lazarus</li>
+                <li><a href="https://tomcat.is.obviously.best">tomcat.is.obviously.best</a> routes to an iCloud album of my feline friend Dylan "Murder" Thomas</li>            
+                <li>*.are.obviously.best is a wildcard route.  Plug in your favorite things and see what comes of it!</li>
+                <li>*.is.obviously.best is a wildcard route.  Plug in your favorite thing and see what comes of it!</li>
+            </ul>
+        </div>
+        <p>Think this is cool?  Spread the joy!</p>
+        <ul>
+            <li class="social-share facebook"><img src="/is/facebook.png" alt="Share Page on Facebook" /></li>
+            <li class="social-share twitter"><img src="/is/twitter.png" alt="Share Page on Twitter" /></li>
+            <li class="social-share linkedin"><img  src="/is/linkedin.png" alt="Share Page on LinkedIn" /></li>
+        </ul>
+        <p>Think something's wrong?  Want to add something? <a href="https://github.com/AmyShackles/obviously">Feel free to submit an issue or PR</a></p>
+    </main>
+        <footer>
+            <p>Created with love and hope by Amy Shackles</p>
+        </footer>
+    </body>
     <script>
-        function capitalizeAndConvertHyphensToSpaces(subj) {
-            return subj.split("-").map(val => val[0].toUpperCase() + val.slice(1)).join(" ");
+        const [domain] = window.location.host.split(".");
+        document.getElementById(
+            "content"
+        ).textContent = `Welcome to *.${domain}.obviously.best`;
+        function socialWindow(url) {
+            const left = (screen.width - 570) / 2;
+            const top = (screen.height - 570) / 2;
+            const params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
+            window.open(url,"NewWindow",params);
         }
-        const subject = capitalizeAndConvertHyphensToSpaces(window.location.host.match(/^[^.]+/)[0]);
-        document.head.getElementsByTagName("title")[0].innerText = `${subject} is OBVIOUSY best`;
-        document.getElementById("content").textContent = `${subject} is OBVIOUSLY best.`;
+        document.querySelector(".social-share.facebook").addEventListener('click', () => {
+            const url = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(document.URL)}`
+            socialWindow(url);
+        });
+        document.querySelector(".social-share.twitter").addEventListener('click', () => {
+            const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(document.URL)}&text=${encodeURIComponent("OBVIOUSLY best")}`;
+            socialWindow(url);
+        })
+        document.querySelector(".social-share.linkedin").addEventListener('click', () => {
+            const url = `https://linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(document.URL)}&title=Obviously&summary=${encodeURIComponent("OBVIOUSLY best")}&source=${encodeURIComponent("Obviously.Best")}`;
+            socialWindow(url);
+        });
     </script>
 </html>

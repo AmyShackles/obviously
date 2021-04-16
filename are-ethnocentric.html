@@ -18,16 +18,16 @@
         <main>
             <h1 id="content"></h1>
             <h2>No one country, language, or people should be considered superior to all others.</h2>
-            <p>If you feel like this ISN'T an ethnocentric statement,<br/> <a href="https://github.com/amyshackles/obviously">feel free to submit a PR</a> or send me a <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="@AmyShackles I don&#39;t think this is ethnocentric..." data-related="" data-dnt="true" data-show-count="false">Tweet</a></p>
+            <p>Think this ISN'T ethnocentric?<br/> <a href="https://github.com/amyshackles/obviously">Submit an issue</a> or send me a <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="@AmyShackles I don&#39;t think this is ethnocentric..." data-related="" data-dnt="true" data-show-count="false">Tweet</a></p>
         </main>
-        <footer>Created with disappointment by Amy Shackles</footer>
+        <footer>Created with concern by Amy Shackles</footer>
     </body>        
     <script>
         function capitalizeAndConvertHyphensToSpaces(subj) {
             return subj.split("-").map(val => val[0].toUpperCase() + val.slice(1)).join(" ");
         }
         const subject = capitalizeAndConvertHyphensToSpaces(window.location.host.match(/^[^.]+/)[0]);
-        document.head.getElementsByTagName("title")[0].innerText = `${subject} is.`;
-        document.getElementById("content").textContent = `Saying ${subject} is OBVIOUSLY best is a pretty ethnocentric view.`;
+        document.head.getElementsByTagName("title")[0].innerText = `${subject} are.`;
+        document.getElementById("content").textContent = `Saying ${subject} are OBVIOUSLY best is a pretty ethnocentric view.`;
     </script>
 </html>

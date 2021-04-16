@@ -53,3 +53,22 @@ img {
     width: 64px;
     height: 64px;
 }
+.root h1 {
+    margin: 15px 0;
+}
+.root h2 {
+    margin: 0 0 15px 0;
+}
+.usage {
+    flex-direction: column;
+    text-align: left;
+    list-style:circle;
+    width: 100%;
+    margin-left: 5%;
+}
+.usage h3 {
+    margin: 0;
+}
+.usage li {
+    font-size: 1.25rem;
+}

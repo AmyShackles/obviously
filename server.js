@@ -27,9 +27,14 @@ server.get("/", (req, res) => {
     const rootSubdomain = req.subdomains[0];
     const subject = req.subdomains[1];
     const analyzedSentiment = sentiment.analyze(subject, disallowed);
+    if (!subject) {
+        return res.sendFile(path.join(__dirname + "/index.html"));
+    }
     if (rootSubdomain === "are") {
         if (political.some((politics) => subject.includes(politics))) {
             return res.sendFile(path.join(__dirname + "/political.html"));
+        } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
+            return res.sendFile(path.join(__dirname + "/are-ethnocentric.html"));
         } else if (analyzedSentiment.score < 0) {
             return res.sendFile(path.join(__dirname + "/disallowed.html"));
         }
@@ -43,11 +48,10 @@ server.get("/", (req, res) => {
             return res.redirect(
                 "https://www.icloud.com/sharedalbum/#B0IGWZuqDGaPwcf"
             );
-        }
-        if (political.some((politics) => subject.includes(politics))) {
+        } else if (political.some((politics) => subject.includes(politics))) {
             return res.sendFile(path.join(__dirname + "/political.html"));
         } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
-            return res.sendFile(path.join(__dirname + "/ethnocentric.html"));
+            return res.sendFile(path.join(__dirname + "/is-ethnocentric.html"));
         } else if (analyzedSentiment.score < 0) {
             return res.sendFile(path.join(__dirname + "/disallowed.html"));
         }
