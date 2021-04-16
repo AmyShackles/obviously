@@ -3,7 +3,7 @@ body {
     grid-template-areas:    "header"
                             "content"
                             "footer";
-    grid-template-rows: 100px 1fr 50px;
+    grid-template-rows: 50px 1fr 50px;
     min-height:100vh;
     margin: 0;
     text-align: center;
@@ -26,6 +26,7 @@ main {
     justify-content: center;
     width: 80%;
     margin: auto;
+    font-size: 1.3rem;
 }
 iframe {
     vertical-align: middle;
@@ -46,17 +47,16 @@ ul {
     display: flex;
     list-style-type: none;
     justify-content: space-around;
-    width: 50%;
+    width: 100%;
     padding: 0;
 }
 img {
-    width: 64px;
-    height: 64px;
+    height: 8vw;
 }
-.root h1 {
+h1 {
     margin: 15px 0;
 }
-.root h2 {
+h2 {
     margin: 0 0 15px 0;
 }
 .usage {
@@ -69,6 +69,14 @@ img {
 .usage h3 {
     margin: 0;
 }
-.usage li {
-    font-size: 1.25rem;
+
+.social-share img {
+    height: 10vh;
+}
+
+.info {
+    font-weight: bold;
+}
+.disclaimer {
+    line-height: 1.5;
 }

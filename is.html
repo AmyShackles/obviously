@@ -17,13 +17,13 @@
         <header>Obviously.</header>
         <main>
         <h1 id="content"></h1>
-        <p>Think this SHOULDN'T be the best?<br/><a href="https://github.com/amyshackles/obviously">Submit an issue</a> or send me a <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="@AmyShackles I don&#39;t think this should be the best..." data-related="" data-dnt="true" data-show-count="false">Tweet</a></p>
+        <p class="disclaimer">Think this SHOULDN'T be the best?<br/><a href="https://github.com/AmyShackles/obviously/issues/new?&template=bug_report.md">Submit a bug report</a> or send me a <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="@AmyShackles I don&#39;t think this should be the best..." data-related="" data-dnt="true" data-show-count="false">Tweet</a></p>
 
         <h2>Share this news with your friends!</h2>
         <ul>
-            <li class="social-share facebook"><img src="/is/facebook.png" alt="Share Page on Facebook" /></li>
-            <li class="social-share twitter"><img src="/is/twitter.png" alt="Share Page on Twitter" /></li>
-            <li class="social-share linkedin"><img  src="/is/linkedin.png" alt="Share Page on LinkedIn" /></li>
+            <li class="social-share facebook"><img src="/is/facebook.png" srcset="/is/facebook-small.png 64w, /is/facebook-medium.png 80w, /is/facebook-medium-large.png 120w, /is/facebook-large.png 144w" sizes="10vh" alt="Share Page on Facebook" /></li>
+            <li class="social-share twitter"><img src="/is/twitter.png" srcset="/is/twitter-small.png 78w, /is/twitter-medium.png 97w, /is/twitter-medium-large.png 146w, /is/twitter-large.png 175w" sizes="10vh" alt="Share Page on Twitter" /></li>
+            <li class="social-share linkedin"><img  src="/is/linkedin.png" srcset="/is/linkedin-small.png 75w, /is/linkedin-medium.png 94w, /is/linkedin-medium-large.png 141w, /is/linkedin-large.png 170w" sizes="10vh" alt="Share Page on LinkedIn" /></li>
         </ul>
     </main>
         <footer>
@@ -43,25 +43,24 @@
                 .map((val) => val[0].toUpperCase() + val.slice(1))
                 .join(" ");
         }
-        const subject = capitalizeAndConvertHyphensToSpaces(
-            window.location.host.match(/^[^.]+/)[0]
-        );
+        const [subdomain, verb] = window.location.host.split(".");
+        const subject = capitalizeAndConvertHyphensToSpaces(subdomain);
         document.head.getElementsByTagName(
             "title"
-        )[0].innerText = `${subject} is the best`;
+        )[0].innerText = `${subject} ${verb} the best`;
         document.getElementById(
             "content"
-        ).textContent = `${subject} is OBVIOUSLY the best.`;
+        ).textContent = `${subject} ${verb} OBVIOUSLY the best.`;
         document.querySelector(".social-share.facebook").addEventListener('click', () => {
             const url = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(document.URL)}`
             socialWindow(url);
         });
         document.querySelector(".social-share.twitter").addEventListener('click', () => {
-            const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(document.URL)}&text=${encodeURIComponent(`${subject} is OBVIOUSLY best`)}`;
+            const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(document.URL)}&text=${encodeURIComponent(`${subject} ${verb} OBVIOUSLY best`)}`;
             socialWindow(url);
         })
         document.querySelector(".social-share.linkedin").addEventListener('click', () => {
-            const url = `https://linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(document.URL)}&title=${encodeURIComponent(subject)}&summary=${encodeURIComponent(`${subject} is OBVIOUSLY best`)}&source=${encodeURIComponent("Obviously.Best")}`;
+            const url = `https://linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(document.URL)}&title=${encodeURIComponent(subject)}&summary=${encodeURIComponent(`${subject} ${verb} OBVIOUSLY best`)}&source=${encodeURIComponent("Obviously.Best")}`;
             socialWindow(url);
         });
     </script>

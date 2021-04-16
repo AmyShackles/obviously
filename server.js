@@ -29,31 +29,21 @@ server.get("/", (req, res) => {
     const analyzedSentiment = sentiment.analyze(subject, disallowed);
     if (!subject) {
         return res.sendFile(path.join(__dirname + "/index.html"));
-    }
-    if (rootSubdomain === "are") {
-        if (political.some((politics) => subject.includes(politics))) {
-            return res.sendFile(path.join(__dirname + "/political.html"));
-        } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
-            return res.sendFile(path.join(__dirname + "/are-ethnocentric.html"));
-        } else if (analyzedSentiment.score < 0) {
+    } else if (political.some((politics) => subject.includes(politics))) {
+        return res.sendFile(path.join(__dirname + "/political.html"));
+    } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
+            return res.sendFile(path.join(__dirname + "/ethnocentric.html"));
+    } else if (analyzedSentiment.score < 0) {
             return res.sendFile(path.join(__dirname + "/disallowed.html"));
-        }
-        return res.sendFile(path.join(__dirname + "/are.html"));
-    } else if (rootSubdomain === "is") {
-        if (subject === "bobcat") {
+    } else if (rootSubdomain === "is" || rootSubdomain === "are") {
+        if (rootSubdomain === "is" && subject === "bobcat") {
             return res.redirect(
                 "https://www.icloud.com/sharedalbum/#B0I532ODWlUfMV"
             );
-        } else if (subject === "tomcat") {
+        } else if (rootSubdomain === "is" && subject === "tomcat") {
             return res.redirect(
                 "https://www.icloud.com/sharedalbum/#B0IGWZuqDGaPwcf"
             );
-        } else if (political.some((politics) => subject.includes(politics))) {
-            return res.sendFile(path.join(__dirname + "/political.html"));
-        } else if (ethnocentric.some((ethnicTerm) => subject === ethnicTerm)) {
-            return res.sendFile(path.join(__dirname + "/is-ethnocentric.html"));
-        } else if (analyzedSentiment.score < 0) {
-            return res.sendFile(path.join(__dirname + "/disallowed.html"));
         }
         return res.sendFile(path.join(__dirname + "/is.html"));
     }
