@@ -5,6 +5,11 @@
         <meta name=viewport content="width=device-width, initial-scale=1"/>
         <meta name="theme-color" content="#FFFFFF"/>
         <meta name="twitter:dnt" content="on">
+        <meta property="og:description" content="A non-ethnocentric wildcard subdomain for only the best">
+        <meta property="og:image" content="/ethnocentric/apple-touch-icon.png">
+        <meta name="twitter:card" contents="/ethnocentric/apple-touch-icon.png">
+        <meta property="og:site_name" content="Obviously Best">
+        <meta property="twitter:image:alt" content="Unamused emoji">
         <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/ethnocentric/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/ethnocentric/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/ethnocentric/favicon-16x16.png">
@@ -28,6 +33,7 @@
         }
         const [subdomain, verb] = window.location.host.split(".");
         const subject = capitalizeAndConvertHyphensToSpaces(subdomain);
+        document.head.innerHTML += `<meta property="og:title" content="${subject} ${verb}">`;
         document.head.getElementsByTagName("title")[0].innerText = `${subject} ${verb}.`;
         document.getElementById("content").textContent = `Saying ${subject} ${verb} OBVIOUSLY best is a pretty ethnocentric view.`;
     </script>

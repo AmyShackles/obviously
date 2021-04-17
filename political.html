@@ -5,6 +5,11 @@
         <meta name=viewport content="width=device-width, initial-scale=1"/>
         <meta name="theme-color" content="#FFFFFF"/>
         <meta name="twitter:dnt" content="on">
+        <meta property="og:description" content="A dynamic wildcard subdomain that doesn't want to be political">
+        <meta property="og:image" content="/political/apple-touch-icon.png">
+        <meta name="twitter:card" contents="/political/apple-touch-icon.png">
+        <meta property="og:site_name" content="Obviously Best">
+        <meta property="twitter:image:alt" content="Emoji with its mouth zipped">
         <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/political/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/political/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/political/favicon-16x16.png">
@@ -26,8 +31,10 @@
         function capitalizeAndConvertHyphensToSpaces(subj) {
             return subj.split("-").map(val => val[0].toUpperCase() + val.slice(1)).join(" ");
         }
-        const subject = capitalizeAndConvertHyphensToSpaces(window.location.host.match(/^[^.]+/)[0]);
-        document.head.getElementsByTagName("title")[0].innerText = `${subject} is.`;
+        const [subdomain, verb] = window.location.host.split(".");
+        const subject = capitalizeAndConvertHyphensToSpaces(subdomain);
+        document.head.getElementsByTagName("title")[0].innerText = `${subject} ${verb}.`;
+        document.head.innerHTML += `<meta property="og:title" content="${subject} ${verb}">`;
         document.getElementById("content").textContent = `${subject} has been flagged as political.`;
     </script>
 </html>
