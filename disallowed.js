@@ -96,7 +96,7 @@ const disallowed = {
         chernozhopy: -5,
         "chi-chi": -5,
         "child-abuse":-5,
-        "child-pornography": -5,
+        "child-porn": -5,
         "child-soldiers": -5,
         chilote: -5,
         chinaman: -5,
