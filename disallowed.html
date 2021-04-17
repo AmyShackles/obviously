@@ -2,39 +2,101 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name=viewport content="width=device-width, initial-scale=1"/>
-        <meta name="theme-color" content="#FFFFFF"/>
-        <meta name="twitter:dnt" content="on">
-        <meta property="og:title" content="No.">
-        <meta property="og:description" content="A dynamic wildcard subdomain Amy Shackles already regrets">
-        <meta property="og:image" content="/disallowed/apple-touch-icon.png">
-        <meta name="twitter:card" contents="/disallowed/apple-touch-icon.png">
-        <meta property="og:site_name" content="Obviously Best">
-        <meta property="twitter:image:alt" content="Angry emoji cursing">
-        <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/disallowed/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/disallowed/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/disallowed/favicon-16x16.png">
-        <link rel="manifest" href="/is/site.webmanifest">
-        <link rel="stylesheet" href="/is/styles.css">
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#FFFFFF" />
+        <meta name="twitter:dnt" content="on" />
+        <meta property="og:title" content="No." />
+        <meta
+            property="og:description"
+            content="A dynamic wildcard subdomain Amy Shackles already regrets"
+        />
+        <meta
+            name="description"
+            content="A dynamic wildcard subdomain Amy Shackles already regrets"
+        />
+        <meta property="og:image" content="/disallowed/apple-touch-icon.png" />
+        <meta name="twitter:card" contents="/disallowed/apple-touch-icon.png" />
+        <meta property="og:site_name" content="Obviously Best" />
+        <meta property="twitter:image:alt" content="Angry emoji cursing" />
+        <link
+            rel="apple-touch-icon"
+            type="image/png"
+            sizes="180x180"
+            href="/disallowed/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/disallowed/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/disallowed/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/is/site.webmanifest" />
+        <link rel="stylesheet" href="/is/styles.css" />
+        <script>
+            window.twttr = (function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0],
+                    t = window.twttr || {};
+                if (d.getElementById(id)) return t;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+
+                t._e = [];
+                t.ready = function (f) {
+                    t._e.push(f);
+                };
+
+                return t;
+            })(document, "script", "twitter-wjs");
+        </script>
         <title></title>
     </head>
     <body>
         <header>Obviously.</header>
         <main>
             <h1 id="content"></h1>
-            <p class="disclaimer">Think you SHOULDN'T feel ashamed?<br/><a href="https://github.com/AmyShackles/obviously/issues/new?&template=bug_report.md">Submit a bug report</a> or send me a <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="@AmyShackles I don&#39;t know why this should make me feel ashamed..." data-related="" data-dnt="true" data-show-count="false">Tweet</a></p>
+            <p class="disclaimer">
+                Think you SHOULDN'T feel ashamed?<br /><a
+                    href="https://github.com/AmyShackles/obviously/issues/new?&template=bug_report.md"
+                    >Submit a bug report</a
+                >
+                or send me a
+                <a
+                    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                    class="twitter-share-button"
+                    data-size="large"
+                    data-text="@AmyShackles I don&#39;t know why this should make me feel ashamed..."
+                    data-related=""
+                    data-dnt="true"
+                    data-show-count="false"
+                    >Tweet</a
+                >
+            </p>
         </main>
         <footer>
             <p>Created with disappointment by Amy Shackles</p>
         </footer>
-    </body>        
+    </body>
     <script>
         function capitalizeAndConvertHyphensToSpaces(subj) {
-            return subj.split("-").map(val => val[0].toUpperCase() + val.slice(1)).join(" ");
+            return subj
+                .split("-")
+                .map((val) => val[0].toUpperCase() + val.slice(1))
+                .join(" ");
         }
-        const subject = capitalizeAndConvertHyphensToSpaces(window.location.host.match(/^[^.]+/)[0]);
+        const subject = capitalizeAndConvertHyphensToSpaces(
+            window.location.host.match(/^[^.]+/)[0]
+        );
         document.head.getElementsByTagName("title")[0].innerText = "No.";
-        document.getElementById("content").textContent = "This behavior is unacceptable and you should be ashamed of yourself.";
+        document.getElementById("content").textContent =
+            "This behavior is unacceptable and you should be ashamed of yourself.";
     </script>
 </html>

@@ -2,39 +2,106 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name=viewport content="width=device-width, initial-scale=1"/>
-        <meta name="theme-color" content="#FFFFFF"/>
-        <meta name="twitter:dnt" content="on">
-        <meta property="og:description" content="A dynamic wildcard subdomain that doesn't want to be political">
-        <meta property="og:image" content="/political/apple-touch-icon.png">
-        <meta name="twitter:card" contents="/political/apple-touch-icon.png">
-        <meta property="og:site_name" content="Obviously Best">
-        <meta property="twitter:image:alt" content="Emoji with its mouth zipped">
-        <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/political/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/political/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/political/favicon-16x16.png">
-        <link rel="manifest" href="/political/site.webmanifest">
-        <link rel="stylesheet" href="/is/styles.css">
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#FFFFFF" />
+        <meta name="twitter:dnt" content="on" />
+        <meta
+            property="og:description"
+            content="A dynamic wildcard subdomain that doesn't want to be political"
+        />
+        <meta name="description" content="A dynamic wildcard subdomain that doesn't want to be political"/>
+        <meta property="og:image" content="/political/apple-touch-icon.png" />
+        <meta name="twitter:card" contents="/political/apple-touch-icon.png" />
+        <meta property="og:site_name" content="Obviously Best" />
+        <meta
+            property="twitter:image:alt"
+            content="Emoji with its mouth zipped"
+        />
+        <link
+            rel="apple-touch-icon"
+            type="image/png"
+            sizes="180x180"
+            href="/political/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/political/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/political/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/political/site.webmanifest" />
+        <link rel="stylesheet" href="/is/styles.css" />
+        <script>
+            window.twttr = (function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0],
+                    t = window.twttr || {};
+                if (d.getElementById(id)) return t;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js, fjs);
+
+                t._e = [];
+                t.ready = function (f) {
+                    t._e.push(f);
+                };
+
+                return t;
+            })(document, "script", "twitter-wjs");
+        </script>
         <title></title>
     </head>
     <body>
         <header>Obviously.</header>
         <main>
             <h1 id="content"></h1>
-            <p class="info">The creator of this site intended this domain to be used to spread joy and merriment and feels that pushing political agendas undermines that intent.</p>
-            <p class="disclaimer">Think this isn't political?<br/><a href="https://github.com/AmyShackles/obviously/issues/new?&template=bug_report.md">Submit a bug report</a> or send me a <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="@AmyShackles I don&#39;t know why this is political..." data-related="" data-dnt="true" data-show-count="false">Tweet</a></p>
+            <p class="info">
+                The creator of this site intended this domain to be used to
+                spread joy and merriment and feels that pushing political
+                agendas undermines that intent.
+            </p>
+            <p class="disclaimer">
+                Think this isn't political?<br /><a
+                    href="https://github.com/AmyShackles/obviously/issues/new?&template=bug_report.md"
+                    >Submit a bug report</a
+                >
+                or send me a
+                <a
+                    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                    class="twitter-share-button"
+                    data-size="large"
+                    data-text="@AmyShackles I don&#39;t know why this is political..."
+                    data-related=""
+                    data-dnt="true"
+                    data-show-count="false"
+                    >Tweet</a
+                >
+            </p>
         </main>
         <footer>Created with reluctance by Amy Shackles</footer>
-    </body>        
+    </body>
     <script>
         function capitalizeAndConvertHyphensToSpaces(subj) {
-            return subj.split("-").map(val => val[0].toUpperCase() + val.slice(1)).join(" ");
+            return subj
+                .split("-")
+                .map((val) => val[0].toUpperCase() + val.slice(1))
+                .join(" ");
         }
         const [subdomain, verb] = window.location.host.split(".");
         const subject = capitalizeAndConvertHyphensToSpaces(subdomain);
-        document.head.getElementsByTagName("title")[0].innerText = `${subject} ${verb}.`;
+        document.head.getElementsByTagName(
+            "title"
+        )[0].innerText = `${subject} ${verb}.`;
         document.head.innerHTML += `<meta property="og:title" content="${subject} ${verb}">`;
-        document.getElementById("content").textContent = `${subject} has been flagged as political.`;
+        document.getElementById(
+            "content"
+        ).textContent = `${subject} has been flagged as political.`;
     </script>
 </html>
