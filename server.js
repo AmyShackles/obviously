@@ -26,6 +26,7 @@ server.get("/", (req, res) => {
     res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
     const rootSubdomain = req.subdomains[0];
     const subject = req.subdomains[1];
+    console.log({ subdomain: rootSubdomain + "." + subject });
     const analyzedSentiment = sentiment.analyze(subject, disallowed);
     if (!subject) {
         return res.sendFile(path.join(__dirname + "/index.html"));
