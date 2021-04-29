@@ -72,6 +72,8 @@ server.get("/", (req, res) => {
             return res.redirect(
                 "https://www.icloud.com/sharedalbum/#B0IGWZuqDGaPwcf"
             );
+        } else if (rootSubdomain === "are" && (subject === "bobcat-and-tomcat" || subject === "tomcat-and-bobcat")) {
+            return res.redirect("https://www.icloud.com/sharedalbum/#B0I5qXGF1Q4g5o");
         }
         return res.sendFile(path.join(__dirname + "/is.html"));
     }
