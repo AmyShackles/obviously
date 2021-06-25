@@ -72,6 +72,8 @@ server.get("/", (req, res) => {
             return res.redirect(
                 "https://www.icloud.com/sharedalbum/#B0IGWZuqDGaPwcf"
             );
+        } else if (rootSubdomain === "is" && subject === "amyshackles") {
+            return res.redirect("https://www.polywork.com/amyshackles");
         } else if (
             rootSubdomain === "are" &&
             (subject === "tomcat-and-bobcat" || subject === "bobcat-and-tomcat")
