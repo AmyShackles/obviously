@@ -13,6 +13,10 @@
             name="description"
             content="A dynamic wildcard subdomain for only the BEST, made with the best intentions"
         />
+        <meta
+            name="og:title"
+            content="THE BEST"
+        />
         <meta property="og:image" content="/is/apple-touch-icon.png" />
         <meta name="twitter:card" contents="/is/apple-touch-icon.png" />
         <meta property="og:site_name" content="Obviously Best" />
@@ -38,7 +42,7 @@
         <link rel="manifest" href="/is/site.webmanifest" />
         <link rel="stylesheet" href="/is/styles.css" />
 
-        <title></title>
+        <title>The best!</title>
     </head>
     <body>
         <header>Obviously.</header>
@@ -170,11 +174,6 @@
         }
         const [subdomain, verb] = window.location.host.split(".");
         const subject = capitalizeAndConvertHyphensToSpaces(subdomain);
-        document.head.getElementsByTagName(
-            "title"
-        )[0].innerText = `${subject} ${verb} the best`;
-        document.head.innerHTML +=
-            '<meta property="og:title" content="' + subject + ' ' + verb + ' OBVIOUSLY the best"' + '>';
         document.getElementById(
             "content"
         ).textContent = `${subject} ${verb} OBVIOUSLY the best.`;

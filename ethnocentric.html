@@ -22,6 +22,10 @@
             contents="/ethnocentric/apple-touch-icon.png"
         />
         <meta property="og:site_name" content="Obviously Best" />
+        <meta
+            property="og:title"
+            content="This seems ethnocentric..."
+        />
         <meta property="twitter:image:alt" content="Unamused emoji" />
         <link
             rel="apple-touch-icon"
@@ -44,7 +48,7 @@
         <link rel="manifest" href="/ethnocentric/site.webmanifest" />
         <link rel="stylesheet" href="/is/styles.css" />
 
-        <title></title>
+        <title>This seems ethnocentric...</title>
     </head>
     <body>
         <header>Obviously.</header>
@@ -103,10 +107,6 @@
         }
         const [subdomain, verb] = window.location.host.split(".");
         const subject = capitalizeAndConvertHyphensToSpaces(subdomain);
-        document.head.innerHTML += '<meta property="og:title" content="' + subject + ' ' + verb + '"' + '>';
-        document.head.getElementsByTagName(
-            "title"
-        )[0].innerText = `${subject} ${verb}.`;
         document.getElementById(
             "content"
         ).textContent = `Saying ${subject} ${verb} OBVIOUSLY best is a pretty ethnocentric view.`;

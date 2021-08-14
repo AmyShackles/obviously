@@ -9,6 +9,10 @@
             property="og:description"
             content="A dynamic wildcard subdomain that doesn't want to be political"
         />
+        <meta
+            property="og:title"
+            content="This seems political..."
+        />
         <meta name="description" content="A dynamic wildcard subdomain that doesn't want to be political"/>
         <meta property="og:image" content="/political/apple-touch-icon.png" />
         <meta name="twitter:card" contents="/political/apple-touch-icon.png" />
@@ -38,7 +42,7 @@
         <link rel="manifest" href="/political/site.webmanifest" />
         <link rel="stylesheet" href="/is/styles.css" />
 
-        <title></title>
+        <title>This seems political...</title>
     </head>
     <body>
         <header>Obviously.</header>
@@ -95,12 +99,8 @@
                 .map((val) => val[0].toUpperCase() + val.slice(1))
                 .join(" ");
         }
-        const [subdomain, verb] = window.location.host.split(".");
+        const [subdomain] = window.location.host.split(".");
         const subject = capitalizeAndConvertHyphensToSpaces(subdomain);
-        document.head.getElementsByTagName(
-            "title"
-        )[0].innerText = `${subject} ${verb}.`;
-        document.head.innerHTML += '<meta property="og:title" content="' + subject + ' ' + verb + '"' + '>';
         document.getElementById(
             "content"
         ).textContent = `${subject} has been flagged as political.`;
