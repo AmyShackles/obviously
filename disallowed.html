@@ -39,12 +39,12 @@
         <link rel="manifest" href="/is/site.webmanifest" />
         <link rel="stylesheet" href="/is/styles.css" />
 
-        <title></title>
+        <title>No.</title>
     </head>
     <body>
         <header>Obviously.</header>
         <main>
-            <h1 id="content"></h1>
+            <h1 id="content">This behavior is unacceptable and you should be ashamed of yourself.</h1>
             <p class="disclaimer">
                 Think you SHOULDN'T feel ashamed?<br /><a
                     href="https://github.com/AmyShackles/obviously/issues/new?&template=bug_report.md"
@@ -85,19 +85,5 @@
 
             return t;
         })(document, "script", "twitter-wjs");
-    </script>
-    <script>
-        function capitalizeAndConvertHyphensToSpaces(subj) {
-            return subj
-                .split("-")
-                .map((val) => val[0].toUpperCase() + val.slice(1))
-                .join(" ");
-        }
-        const subject = capitalizeAndConvertHyphensToSpaces(
-            window.location.host.match(/^[^.]+/)[0]
-        );
-        document.head.getElementsByTagName("title")[0].innerText = "No.";
-        document.getElementById("content").textContent =
-            "This behavior is unacceptable and you should be ashamed of yourself.";
     </script>
 </html>

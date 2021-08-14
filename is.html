@@ -45,7 +45,7 @@
         <main>
             <h1 id="content"></h1>
             <p class="disclaimer">
-                Think this SHOULDN'T be the best?<br /><a
+                <span id="disclaimer">Think this SHOULDN'T be the best?</span><br /><a
                     href="https://github.com/AmyShackles/obviously/issues/new?&template=bug_report.md"
                     >Submit a bug report</a
                 >
@@ -174,10 +174,11 @@
             "title"
         )[0].innerText = `${subject} ${verb} the best`;
         document.head.innerHTML +=
-            '<meta property="og:title" content=`${subject} ${verb} the best`>';
+            '<meta property="og:title" content="' + subject + ' ' + verb + ' the best"' + '>';
         document.getElementById(
             "content"
         ).textContent = `${subject} ${verb} OBVIOUSLY the best.`;
+        document.getElementById('disclaimer').textContent = `Think ${subject} SHOULDN'T be the best?`;
         document
             .querySelector(".social-share.facebook")
             .addEventListener("click", () => {

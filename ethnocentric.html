@@ -103,7 +103,7 @@
         }
         const [subdomain, verb] = window.location.host.split(".");
         const subject = capitalizeAndConvertHyphensToSpaces(subdomain);
-        document.head.innerHTML += `<meta property="og:title" content="${subject} ${verb}">`;
+        document.head.innerHTML += '<meta property="og:title" content="' + subject + ' ' + verb + '"' + '>';
         document.head.getElementsByTagName(
             "title"
         )[0].innerText = `${subject} ${verb}.`;

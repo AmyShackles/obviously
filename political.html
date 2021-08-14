@@ -100,7 +100,7 @@
         document.head.getElementsByTagName(
             "title"
         )[0].innerText = `${subject} ${verb}.`;
-        document.head.innerHTML += `<meta property="og:title" content="${subject} ${verb}">`;
+        document.head.innerHTML += '<meta property="og:title" content="' + subject + ' ' + verb + '"' + '>';
         document.getElementById(
             "content"
         ).textContent = `${subject} has been flagged as political.`;
