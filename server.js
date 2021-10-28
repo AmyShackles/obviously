@@ -25,6 +25,10 @@ mongoose.connect(mongoURI, connectOptions, (err, db) => {
 });
 
 const server = express();
+server.use(
+    "/ashley-bass",
+    express.static(path.join(__dirname + "/ashley-bass"))
+);
 server.use("/disallowed", express.static(path.join(__dirname + "/disallowed")));
 server.use(
     "/ethnocentric",
@@ -45,12 +49,18 @@ server.get("/", (req, res) => {
     const subdomain = subject + "." + rootSubdomain;
     const { ip, ips } = req;
     const analyzedSentiment = sentiment.analyze(subject, disallowed);
-    const query = Log.where({  rootSubdomain, subject, subdomain, ip, ips  });
+    const query = Log.where({ rootSubdomain, subject, subdomain, ip, ips });
     query.findOne((err, log) => {
         if (err) console.log(err);
         if (log === null) {
-            const newLog = new Log({rootSubdomain, subject, subdomain, ip, ips});
-            newLog.save(err => {
+            const newLog = new Log({
+                rootSubdomain,
+                subject,
+                subdomain,
+                ip,
+                ips,
+            });
+            newLog.save((err) => {
                 if (err) console.log(err);
             });
         }
@@ -73,7 +83,9 @@ server.get("/", (req, res) => {
                 "https://www.icloud.com/sharedalbum/#B0IGWZuqDGaPwcf"
             );
         } else if (rootSubdomain === "is" && subject === "amyshackles") {
-            return res.redirect("https://www.polywork.com/amyshackles");
+            return res.redirect("https://amyshackles.com");
+        } else if (rootSubdomain === "is" && subject === "ashley-bass") {
+            res.sendFile(path.join(__dirname + "/ashley-bass.html"));
         } else if (
             rootSubdomain === "are" &&
             (subject === "tomcat-and-bobcat" || subject === "bobcat-and-tomcat")
