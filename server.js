@@ -85,7 +85,7 @@ server.get("/", (req, res) => {
         } else if (rootSubdomain === "is" && subject === "amyshackles") {
             return res.redirect("https://amyshackles.com");
         } else if (rootSubdomain === "is" && subject === "ashley-bass") {
-            res.sendFile(path.join(__dirname + "/ashley-bass.html"));
+            return res.sendFile(path.join(__dirname + "/ashley-bass.html"));
         } else if (
             rootSubdomain === "are" &&
             (subject === "tomcat-and-bobcat" || subject === "bobcat-and-tomcat")
