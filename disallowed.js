@@ -299,6 +299,7 @@ const disallowed = {
         khokhol: -5,
         kike: -5,
         kimchi: -5,
+        kkk: -5,
         knacker: -5,
         kolorad: -5,
         kraut: -5,
