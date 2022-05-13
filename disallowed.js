@@ -305,6 +305,8 @@ const disallowed = {
         kraut: -5,
         kuffar: -5,
         kushi: -5,
+        "ku-klux-clan": -5,
+        "ku-klux-klan": -5,
         "kwai-lo": -5,
         kyke: -5,
         kyopo: -5,
